@@ -1122,17 +1122,21 @@ main {
 .cert-list a {
   display: flex;
   min-height: 44px;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.65rem;
   padding: 0.6rem 0.7rem;
   border: 1px solid var(--line);
   color: #b6c9bb;
   font-family: var(--mono);
   font-size: 0.69rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
   transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
 .cert-list a > span:first-child {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
   color: var(--green);
 }
 

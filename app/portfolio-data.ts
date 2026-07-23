@@ -131,16 +131,24 @@ export const achievements = [
 
 export const certifications = [
   {
-    name: "OCI Architect Associate",
+    name: "Oracle Cloud Infrastructure 2024 Certified Architect Associate",
     url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=C4A9B49781AE0BFECC46DED75BDB0F4DD3390C54941C29C3C1C3B1AA1EFBC3B7",
   },
   {
-    name: "OCI Foundations Associate",
+    name: "Oracle Cloud Infrastructure 2023 Certified Foundations Associate",
     url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=BB774710FEDC9B69EFB16248F8F3F8905EF7FDB9421FC9F94B4AD6C107DFABBA",
   },
   {
-    name: "OCI Generative AI Professional",
+    name: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=16F81FE6A07831D0305876E3BCA89E1CE96EAED05959C56DBC0726B01C21D7FA",
+  },
+  {
+    name: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
     url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=43FFD9E59E4A03C20D810FE9E8777C8D473ACB761D985A0AAA0C659AF1E13577",
+  },
+  {
+    name: "Oracle Data Platform 2025 Certified Foundations Associate",
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=680CB91A1F3328D10B5C7ECDB158B66F7AD178F9A4EC8201572312ED6C912562",
   },
 ] as const;
 

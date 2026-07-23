@@ -44,6 +44,11 @@ test("server-renders Pratik Raut's portfolio", async () => {
   assert.match(html, /pratik-hacker-portrait\.webp/);
   assert.match(html, /pr-favicon\.svg/);
   assert.match(html, /Identity verified/);
+  assert.match(html, /Oracle Cloud Infrastructure 2024 Certified Architect Associate/);
+  assert.match(html, /Oracle Cloud Infrastructure 2023 Certified Foundations Associate/);
+  assert.match(html, /Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate/);
+  assert.match(html, /Oracle Cloud Infrastructure 2025 Certified Generative AI Professional/);
+  assert.match(html, /Oracle Data Platform 2025 Certified Foundations Associate/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|taking shape/i);
 });
 

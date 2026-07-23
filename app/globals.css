@@ -508,32 +508,55 @@ main {
   height: 9.5rem;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(87, 255, 143, 0.42);
+  border: 1px solid rgba(87, 255, 143, 0.16);
   border-radius: 50%;
   box-shadow:
-    0 0 0 1.6rem rgba(87, 255, 143, 0.035),
-    0 0 0 3.2rem rgba(87, 255, 143, 0.018);
+    0 0 0 1.6rem rgba(87, 255, 143, 0.022),
+    0 0 0 3.2rem rgba(87, 255, 143, 0.012);
 }
 
-.identity-target::before,
-.identity-target::after {
+.face-mesh {
   position: absolute;
-  background: rgba(87, 255, 143, 0.48);
-  content: "";
+  inset: 0;
+  transform: translateY(-8%) scale(1.16, 1.05);
+  transform-origin: center;
+  filter: drop-shadow(0 0 4px rgba(87, 255, 143, 0.38));
+  animation: faceMeshLock 4.2s ease-in-out infinite;
 }
 
-.identity-target::before {
-  top: 50%;
-  left: -1.2rem;
-  width: calc(100% + 2.4rem);
+.face-mesh-edge {
+  position: absolute;
+  top: var(--mesh-y);
+  left: var(--mesh-x);
+  width: var(--mesh-length);
   height: 1px;
+  transform: rotate(var(--mesh-angle));
+  transform-origin: 0 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(87, 255, 143, 0.48),
+    rgba(189, 255, 106, 0.9)
+  );
+  opacity: 0.72;
+  box-shadow: 0 0 4px rgba(87, 255, 143, 0.52);
+  animation: faceMeshTrace 3.6s ease-in-out infinite;
+  animation-delay: var(--mesh-delay);
 }
 
-.identity-target::after {
-  top: -1.2rem;
-  left: 50%;
-  width: 1px;
-  height: calc(100% + 2.4rem);
+.face-mesh-node {
+  position: absolute;
+  top: var(--mesh-y);
+  left: var(--mesh-x);
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid rgba(189, 255, 106, 0.92);
+  background: rgba(87, 255, 143, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(2, 6, 4, 0.72),
+    0 0 6px rgba(87, 255, 143, 0.8);
+  animation: faceMeshNode 2.8s ease-in-out infinite;
+  animation-delay: var(--mesh-delay);
 }
 
 .identity-overlay {
@@ -1337,10 +1360,42 @@ footer p:first-child span {
   50% { top: 80%; opacity: 0.9; }
 }
 
+@keyframes faceMeshLock {
+  0%, 100% { opacity: 0.68; }
+  50% { opacity: 0.94; }
+}
+
+@keyframes faceMeshTrace {
+  0%, 100% { opacity: 0.54; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes faceMeshNode {
+  0%, 100% {
+    opacity: 0.62;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.18);
+  }
+}
+
 @media (min-width: 961px) {
   .identity-image img {
     object-position: 50% 23%;
     transform: scale(1.2);
+  }
+}
+
+@media (min-width: 501px) and (max-width: 960px) {
+  .identity-target {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  .face-mesh {
+    transform: translateY(2%) scale(1.16, 1.4);
   }
 }
 

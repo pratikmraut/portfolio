@@ -481,8 +481,8 @@ main {
 
 .identity-target {
   position: absolute;
-  top: 31%;
-  left: 50%;
+  top: 35.5%;
+  left: 50.65%;
   z-index: 5;
   width: 9.5rem;
   height: 9.5rem;
@@ -1321,6 +1321,12 @@ footer p:first-child span {
   .identity-image img {
     object-position: 50% 23%;
     transform: scale(1.2);
+  }
+}
+
+@media (min-width: 501px) and (max-width: 960px) {
+  .identity-target {
+    top: 49%;
   }
 }
 

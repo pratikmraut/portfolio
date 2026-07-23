@@ -412,7 +412,7 @@ main {
 }
 
 .identity-image {
-  --identity-target-x: 50.65%;
+  --identity-target-x: 51.5%;
 
   position: relative;
   height: clamp(320px, 38vh, 380px);

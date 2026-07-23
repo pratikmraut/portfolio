@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { Terminal } from "./components/Terminal";
 import {
   achievements,
@@ -10,142 +9,6 @@ import {
   projects,
   skillGroups,
 } from "./portfolio-data";
-
-const faceMeshPoints = {
-  crown: [50, 4],
-  leftForehead: [28, 13],
-  rightForehead: [72, 13],
-  leftTemple: [14, 28],
-  rightTemple: [86, 28],
-  leftBrowOuter: [20, 33],
-  leftBrowInner: [42, 32],
-  rightBrowInner: [58, 32],
-  rightBrowOuter: [80, 33],
-  leftEyeOuter: [20, 43],
-  leftEyeInner: [41, 43],
-  rightEyeInner: [59, 43],
-  rightEyeOuter: [80, 43],
-  leftUpperCheek: [8, 49],
-  rightUpperCheek: [92, 49],
-  bridge: [50, 36],
-  noseMid: [50, 52],
-  leftCheek: [13, 61],
-  rightCheek: [87, 61],
-  leftNose: [43, 58],
-  nose: [50, 62],
-  rightNose: [57, 58],
-  leftMouth: [35, 69],
-  mouth: [50, 71],
-  rightMouth: [65, 69],
-  leftJaw: [23, 84],
-  rightJaw: [77, 84],
-  leftChin: [39, 94],
-  chin: [50, 98],
-  rightChin: [61, 94],
-} as const;
-
-type FaceMeshPointName = keyof typeof faceMeshPoints;
-
-const faceMeshEdges: ReadonlyArray<readonly [FaceMeshPointName, FaceMeshPointName]> = [
-  ["crown", "leftForehead"],
-  ["crown", "rightForehead"],
-  ["leftForehead", "leftTemple"],
-  ["rightForehead", "rightTemple"],
-  ["leftTemple", "leftUpperCheek"],
-  ["rightTemple", "rightUpperCheek"],
-  ["leftUpperCheek", "leftCheek"],
-  ["rightUpperCheek", "rightCheek"],
-  ["leftCheek", "leftJaw"],
-  ["rightCheek", "rightJaw"],
-  ["leftJaw", "leftChin"],
-  ["rightJaw", "rightChin"],
-  ["leftChin", "chin"],
-  ["chin", "rightChin"],
-  ["crown", "bridge"],
-  ["leftForehead", "bridge"],
-  ["rightForehead", "bridge"],
-  ["leftTemple", "leftBrowOuter"],
-  ["rightTemple", "rightBrowOuter"],
-  ["leftBrowOuter", "leftBrowInner"],
-  ["rightBrowInner", "rightBrowOuter"],
-  ["leftBrowInner", "bridge"],
-  ["rightBrowInner", "bridge"],
-  ["leftBrowOuter", "leftEyeOuter"],
-  ["rightBrowOuter", "rightEyeOuter"],
-  ["leftBrowInner", "leftEyeInner"],
-  ["rightBrowInner", "rightEyeInner"],
-  ["leftEyeOuter", "leftEyeInner"],
-  ["rightEyeInner", "rightEyeOuter"],
-  ["leftEyeInner", "bridge"],
-  ["rightEyeInner", "bridge"],
-  ["leftEyeOuter", "leftUpperCheek"],
-  ["rightEyeOuter", "rightUpperCheek"],
-  ["bridge", "noseMid"],
-  ["noseMid", "leftNose"],
-  ["noseMid", "rightNose"],
-  ["noseMid", "nose"],
-  ["leftNose", "nose"],
-  ["nose", "rightNose"],
-  ["leftEyeInner", "leftNose"],
-  ["rightEyeInner", "rightNose"],
-  ["leftNose", "leftMouth"],
-  ["rightNose", "rightMouth"],
-  ["leftMouth", "mouth"],
-  ["mouth", "rightMouth"],
-  ["nose", "mouth"],
-  ["leftCheek", "leftMouth"],
-  ["rightCheek", "rightMouth"],
-  ["leftMouth", "leftJaw"],
-  ["rightMouth", "rightJaw"],
-  ["leftMouth", "leftChin"],
-  ["rightMouth", "rightChin"],
-  ["mouth", "chin"],
-];
-
-function FaceMesh() {
-  const pointEntries = Object.entries(faceMeshPoints) as Array<
-    [FaceMeshPointName, readonly [number, number]]
-  >;
-
-  return (
-    <span className="face-mesh">
-      {faceMeshEdges.map(([startName, endName], index) => {
-        const [startX, startY] = faceMeshPoints[startName];
-        const [endX, endY] = faceMeshPoints[endName];
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        const style = {
-          "--mesh-x": `${startX}%`,
-          "--mesh-y": `${startY}%`,
-          "--mesh-length": `${Math.hypot(deltaX, deltaY)}%`,
-          "--mesh-angle": `${Math.atan2(deltaY, deltaX) * (180 / Math.PI)}deg`,
-          "--mesh-delay": `${index * -55}ms`,
-        } as CSSProperties;
-
-        return (
-          <span
-            className="face-mesh-edge"
-            key={`${startName}-${endName}`}
-            style={style}
-          />
-        );
-      })}
-      {pointEntries.map(([name, [x, y]], index) => (
-        <span
-          className="face-mesh-node"
-          key={name}
-          style={
-            {
-              "--mesh-x": `${x}%`,
-              "--mesh-y": `${y}%`,
-              "--mesh-delay": `${index * -90}ms`,
-            } as CSSProperties
-          }
-        />
-      ))}
-    </span>
-  );
-}
 
 export default function Home() {
   return (
@@ -232,9 +95,6 @@ export default function Home() {
                   />
                   <span className="identity-grid" aria-hidden="true" />
                   <span className="identity-sweep" aria-hidden="true" />
-                  <span className="identity-target" aria-hidden="true">
-                    <FaceMesh />
-                  </span>
                   <div className="identity-overlay" aria-hidden="true">
                     <span>SUBJECT_001</span>
                     <span>CONFIDENCE 99.8%</span>

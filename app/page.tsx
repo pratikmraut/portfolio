@@ -232,7 +232,6 @@ export default function Home() {
                   />
                   <span className="identity-grid" aria-hidden="true" />
                   <span className="identity-sweep" aria-hidden="true" />
-                  <span className="identity-axis" aria-hidden="true" />
                   <span className="identity-target" aria-hidden="true">
                     <FaceMesh />
                   </span>

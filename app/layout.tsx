@@ -1,72 +1,67 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const description =
   "Backend engineer building reliable banking APIs, developer tools, and automation with Java, Spring Boot, Oracle DB, and modern cloud platforms.";
+const defaultSiteUrl = "https://pratikmraut.github.io/portfolio/";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
+const siteUrl = new URL(
+  configuredSiteUrl.endsWith("/") ? configuredSiteUrl : `${configuredSiteUrl}/`,
+);
+const publicUrl = (asset: string) => new URL(asset, siteUrl).toString();
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const forwardedHost = requestHeaders.get("x-forwarded-host")?.split(",")[0]?.trim();
-  const requestedHost = forwardedHost ?? requestHeaders.get("host");
-  const host =
-    requestedHost && /^[a-z0-9.-]+(?::\d{1,5})?$/i.test(requestedHost)
-      ? requestedHost
-      : undefined;
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host?.startsWith("localhost") || host?.startsWith("127.0.0.1") ? "http" : "https");
-  const siteUrl = host ? `${protocol === "http" ? "http" : "https"}://${host}` : undefined;
-  const socialImage = siteUrl ? `${siteUrl}/og.png` : undefined;
-
-  return {
-    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
-    title: {
-      default: "Pratik Raut | Backend Engineer",
-      template: "%s | Pratik Raut",
-    },
-    description,
-    keywords: [
-      "Pratik Raut",
-      "Backend Engineer",
-      "Java",
-      "Spring Boot",
-      "Oracle FLEXCUBE",
-      "REST APIs",
-      "Fintech",
+export const metadata: Metadata = {
+  metadataBase: siteUrl,
+  title: {
+    default: "Pratik Raut | Backend Engineer",
+    template: "%s | Pratik Raut",
+  },
+  description,
+  keywords: [
+    "Pratik Raut",
+    "Backend Engineer",
+    "Java",
+    "Spring Boot",
+    "Oracle FLEXCUBE",
+    "REST APIs",
+    "Fintech",
+  ],
+  authors: [{ name: "Pratik Raut" }],
+  creator: "Pratik Raut",
+  icons: {
+    icon: [
+      {
+        url: `${publicUrl("pr-favicon.svg")}?v=20260723`,
+        type: "image/svg+xml",
+        sizes: "any",
+      },
     ],
-    authors: [{ name: "Pratik Raut" }],
-    creator: "Pratik Raut",
-    icons: {
-      icon: [
-        {
-          url: "/pr-favicon.svg?v=20260723",
-          type: "image/svg+xml",
-          sizes: "any",
-        },
-      ],
-      shortcut: "/pr-favicon.svg?v=20260723",
-    },
-    robots: { index: true, follow: true },
-    alternates: siteUrl ? { canonical: siteUrl } : undefined,
-    openGraph: {
-      type: "website",
-      title: "Pratik Raut | Backend Engineer",
-      description,
-      siteName: "Pratik Raut Portfolio",
-      url: siteUrl,
-      images: socialImage
-        ? [{ url: socialImage, width: 1731, height: 909, alt: "Pratik Raut — Backend Engineer" }]
-        : undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Pratik Raut | Backend Engineer",
-      description,
-      images: socialImage ? [socialImage] : undefined,
-    },
-  };
-}
+    shortcut: `${publicUrl("pr-favicon.svg")}?v=20260723`,
+  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: siteUrl },
+  openGraph: {
+    type: "website",
+    title: "Pratik Raut | Backend Engineer",
+    description,
+    siteName: "Pratik Raut Portfolio",
+    url: siteUrl,
+    images: [
+      {
+        url: publicUrl("og.png"),
+        width: 1731,
+        height: 909,
+        alt: "Pratik Raut — Backend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pratik Raut | Backend Engineer",
+    description,
+    images: [publicUrl("og.png")],
+  },
+};
 
 export const viewport: Viewport = {
   width: "device-width",

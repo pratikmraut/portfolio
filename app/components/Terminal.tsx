@@ -19,6 +19,8 @@ const navigationCommands: Record<string, { target: string; message: string }> = 
 };
 
 const quickCommands = ["help", "impact", "experience", "projects", "skills", "status"];
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
 
 export function Terminal() {
   const [input, setInput] = useState("");
@@ -63,11 +65,16 @@ export function Terminal() {
 
     if (command === "resume") {
       append("output", "Opening Pratik_Raut_Resume.pdf...");
-      window.open("/Pratik_Raut_Resume.pdf", "_blank", "noopener,noreferrer");
+      window.open(`${basePath}/Pratik_Raut_Resume.pdf`, "_blank", "noopener,noreferrer");
       return;
     }
 
     if (command === "status") {
+      if (isStaticExport) {
+        append("output", `PORTFOLIO ONLINE · GITHUB PAGES · ${new Date().toLocaleString()}`);
+        return;
+      }
+
       append("output", "Pinging server runtime...");
       try {
         const response = await fetch("/api/status", { cache: "no-store" });

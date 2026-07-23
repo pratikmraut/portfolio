@@ -10,6 +10,10 @@ import {
   skillGroups,
 } from "./portfolio-data";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export const dynamic = "force-static";
+
 export default function Home() {
   return (
     <>
@@ -84,8 +88,8 @@ export default function Home() {
                   {/* Pre-optimized local variants avoid a runtime image service dependency. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/pratik-hacker-portrait.webp"
-                    srcSet="/pratik-hacker-portrait-480.webp 480w, /pratik-hacker-portrait.webp 900w"
+                    src={`${basePath}/pratik-hacker-portrait.webp`}
+                    srcSet={`${basePath}/pratik-hacker-portrait-480.webp 480w, ${basePath}/pratik-hacker-portrait.webp 900w`}
                     sizes="(max-width: 500px) 92vw, (max-width: 960px) 88vw, 42vw"
                     alt="Hacker-style portrait of Pratik Raut"
                     width="900"

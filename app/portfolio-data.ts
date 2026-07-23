@@ -1,7 +1,9 @@
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const profile = {
   name: "Pratik Raut",
   email: "pratikmraut.8@gmail.com",
-  resume: "/Pratik_Raut_Resume.pdf",
+  resume: `${basePath}/Pratik_Raut_Resume.pdf`,
   links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/pratik-raut/" },
     { label: "GitHub", url: "https://github.com/pratikmraut" },

@@ -58,7 +58,11 @@ The test command creates the production build and validates both the rendered po
 
 ## Deployment
 
-`npm.cmd run build` produces a Cloudflare-compatible deployment in `dist/`. Because the portfolio includes server-rendered metadata and `/api/status`, GitHub Pages is not the intended runtime; deploy it to a Workers- or Node-compatible host.
+`npm.cmd run build` produces a Cloudflare-compatible deployment in `dist/`.
+Pushes to `main` also create a static export and publish it automatically to
+[GitHub Pages](https://pratikmraut.github.io/portfolio/). The Pages build keeps
+the interactive terminal and uses a client-side online status response, while
+Workers-compatible deployments retain the live `/api/status` endpoint.
 
 ## License
 

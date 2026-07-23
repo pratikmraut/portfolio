@@ -501,7 +501,7 @@ main {
 
 .identity-target {
   position: absolute;
-  top: 35.5%;
+  top: 49%;
   left: var(--identity-target-x);
   z-index: 5;
   width: 9.5rem;
@@ -1344,12 +1344,6 @@ footer p:first-child span {
   }
 }
 
-@media (min-width: 501px) and (max-width: 960px) {
-  .identity-target {
-    top: 49%;
-  }
-}
-
 @media (max-width: 1240px) {
   .site-shell {
     grid-template-columns: 1fr;
@@ -1603,6 +1597,10 @@ footer p:first-child span {
 @media (max-width: 500px) {
   .identity-image {
     height: 70vw;
+  }
+
+  .identity-target {
+    top: 42%;
   }
 
   .identity-image img {

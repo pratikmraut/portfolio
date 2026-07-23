@@ -6,11 +6,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pratikmraut/pratik-raut-portfolio.git"
+    "url": "https://github.com/pratikmraut/portfolio.git"
   },
-  "homepage": "https://github.com/pratikmraut/pratik-raut-portfolio",
+  "homepage": "https://github.com/pratikmraut/portfolio",
   "bugs": {
-    "url": "https://github.com/pratikmraut/pratik-raut-portfolio/issues"
+    "url": "https://github.com/pratikmraut/portfolio/issues"
   },
   "engines": {
     "node": ">=22.13.0"

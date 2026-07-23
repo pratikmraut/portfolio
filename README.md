@@ -1,6 +1,6 @@
 # Pratik Raut — Backend Engineer Portfolio
 
-[![CI](https://github.com/pratikmraut/pratik-raut-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pratikmraut/pratik-raut-portfolio/actions/workflows/ci.yml)
+[![CI](https://github.com/pratikmraut/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pratikmraut/portfolio/actions/workflows/ci.yml)
 
 An interactive, production-terminal-inspired portfolio for Java backend engineer Pratik Raut.
 

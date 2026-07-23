@@ -412,6 +412,8 @@ main {
 }
 
 .identity-image {
+  --identity-target-x: 50.65%;
+
   position: relative;
   height: clamp(320px, 38vh, 380px);
   overflow: hidden;
@@ -479,10 +481,28 @@ main {
   animation: identityScan 5.5s ease-in-out infinite;
 }
 
+.identity-axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--identity-target-x);
+  z-index: 5;
+  width: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(87, 255, 143, 0.72) 8%,
+    rgba(87, 255, 143, 0.72) 92%,
+    transparent
+  );
+  box-shadow: 0 0 7px rgba(87, 255, 143, 0.58);
+}
+
 .identity-target {
   position: absolute;
   top: 35.5%;
-  left: 50.65%;
+  left: var(--identity-target-x);
   z-index: 5;
   width: 9.5rem;
   height: 9.5rem;

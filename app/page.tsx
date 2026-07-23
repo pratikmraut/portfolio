@@ -95,6 +95,7 @@ export default function Home() {
                   />
                   <span className="identity-grid" aria-hidden="true" />
                   <span className="identity-sweep" aria-hidden="true" />
+                  <span className="identity-axis" aria-hidden="true" />
                   <span className="identity-target" aria-hidden="true" />
                   <div className="identity-overlay" aria-hidden="true">
                     <span>SUBJECT_001</span>

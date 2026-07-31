@@ -9,6 +9,7 @@ const siteUrl = new URL(
   configuredSiteUrl.endsWith("/") ? configuredSiteUrl : `${configuredSiteUrl}/`,
 );
 const publicUrl = (asset: string) => new URL(asset, siteUrl).toString();
+const socialImageUrl = `${publicUrl("og.png")}?v=20260801`;
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -48,9 +49,9 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: publicUrl("og.png"),
-        width: 1731,
-        height: 909,
+        url: socialImageUrl,
+        width: 1735,
+        height: 907,
         alt: "Pratik Raut — Backend Engineer",
       },
     ],
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pratik Raut | Backend Engineer",
     description,
-    images: [publicUrl("og.png")],
+    images: [socialImageUrl],
   },
 };
 

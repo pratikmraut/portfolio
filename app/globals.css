@@ -914,7 +914,7 @@ main {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1292,6 +1292,10 @@ footer p:first-child span {
 }
 
 @media (max-width: 1240px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .site-shell {
     grid-template-columns: 1fr;
   }

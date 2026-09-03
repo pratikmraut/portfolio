@@ -35,14 +35,22 @@ test("server-renders Pratik Raut's portfolio", async () => {
   assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
 
   const html = await response.text();
-  assert.match(html, /<title>Pratik Raut \| Backend &amp; Payments Engineer<\/title>/i);
-  assert.match(html, /Payment systems for the/);
+  assert.match(html, /<title>Pratik Raut \| Java Backend Engineer<\/title>/i);
+  assert.match(html, /Core banking &amp; payment/i);
   assert.match(html, /150\+/);
   assert.match(html, /Oracle FLEXCUBE/);
-  assert.match(html, /Associate Technical Consultant/);
+  assert.match(html, /Associate Software Engineer/);
   assert.match(html, /Oracle Banking Payments \(OBPM\)/);
   assert.match(html, /NEFT/);
-  assert.match(html, /ACH credit and debit flows/);
+  assert.match(html, /RTGS/);
+  assert.match(html, /IMPS/);
+  assert.doesNotMatch(html, /\bACH\b/i);
+  assert.match(html, /Loans/);
+  assert.match(html, /CASA/);
+  assert.match(html, /Term Deposits/);
+  assert.match(html, /AutoPay Guard/);
+  assert.match(html, /fake-data-only/i);
+  assert.match(html, /no bank connectivity or payment execution/i);
   assert.match(html, /HireME/);
   assert.match(html, /Interactive portfolio terminal/);
   assert.match(html, /pratik-hacker-portrait\.webp/);
@@ -80,7 +88,7 @@ test("removes all disposable starter preview code", async () => {
   ]);
 
   assert.match(page, /<Terminal \/>/);
-  assert.match(layout, /Pratik Raut \| Backend & Payments Engineer/);
+  assert.match(layout, /Pratik Raut \| Java Backend Engineer/);
   assert.doesNotMatch(layout, /next\/font|codex-preview|Starter Project/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

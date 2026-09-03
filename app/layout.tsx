@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const description =
-  "Backend and payments engineer building reliable payment and core-banking APIs with Java, Spring, Oracle FLEXCUBE, OBPM, NEFT, and ACH.";
+  "Java backend engineer building reliable core-banking and payment APIs with Spring Boot, Oracle FLEXCUBE, OBPM, NEFT, RTGS, and IMPS.";
 const defaultSiteUrl = "https://pratikmraut.github.io/portfolio/";
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 const siteUrl = new URL(
@@ -14,21 +14,23 @@ const socialImageUrl = `${publicUrl("og.png")}?v=20260801`;
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Pratik Raut | Backend & Payments Engineer",
+    default: "Pratik Raut | Java Backend Engineer",
     template: "%s | Pratik Raut",
   },
   description,
   keywords: [
     "Pratik Raut",
     "Backend Engineer",
-    "Payments Engineer",
+    "Core Banking",
+    "Payments",
     "Java",
     "Spring",
     "Oracle FLEXCUBE",
     "Oracle Banking Payments",
     "OBPM",
     "NEFT",
-    "ACH",
+    "RTGS",
+    "IMPS",
     "REST APIs",
     "Fintech",
   ],
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
   alternates: { canonical: siteUrl },
   openGraph: {
     type: "website",
-    title: "Pratik Raut | Backend & Payments Engineer",
+    title: "Pratik Raut | Java Backend Engineer",
     description,
     siteName: "Pratik Raut Portfolio",
     url: siteUrl,
@@ -57,13 +59,13 @@ export const metadata: Metadata = {
         url: socialImageUrl,
         width: 1735,
         height: 907,
-        alt: "Pratik Raut — Backend and Payments Engineer",
+        alt: "Pratik Raut — Java Backend Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pratik Raut | Backend & Payments Engineer",
+    title: "Pratik Raut | Java Backend Engineer",
     description,
     images: [socialImageUrl],
   },

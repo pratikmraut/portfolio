@@ -29,25 +29,25 @@ export const impactMetrics = [
     detail: "Delivered through an AI-assisted Java and database log workflow.",
   },
   {
-    value: "NEFT + ACH",
-    label: "Payment rails",
-    detail: "Integrated FLEXCUBE with OBPM and supported controlled credit and debit payment lifecycles.",
+    value: "3 rails",
+    label: "NEFT / RTGS / IMPS",
+    detail: "Integrated FLEXCUBE with OBPM across validation, initiation, inquiry, tracking, and duplicate prevention.",
   },
 ] as const;
 
 export const experiences = [
   {
     company: "Oracle",
-    role: "Associate Technical Consultant",
+    role: "Associate Software Engineer",
     period: "Jun 2023 — Present",
     location: "Pune, India",
-    stack: ["Java", "Spring", "REST APIs", "Oracle FLEXCUBE", "OBPM", "Oracle DB", "PL/SQL"],
+    stack: ["Java", "Spring Boot", "REST APIs", "Oracle FLEXCUBE", "OBPM", "Oracle DB", "PL/SQL"],
     highlights: [
-      "Design and deliver Java / Spring REST APIs for Oracle FLEXCUBE Core Banking across loans, CASA, term deposits, lockers, and NBFC workflows.",
-      "Integrate Oracle FLEXCUBE with Oracle Banking Payments (OBPM) for NEFT flows, including beneficiary and IFSC validation, initiation, status inquiry, error handling, reference tracking, and duplicate prevention.",
-      "Harden outward NEFT, external payouts, and force-debit fund transfers with branch-aware routing, unique references, payment and currency mappings, audit trails, and duplicate-instruction controls.",
-      "Support end-to-end OBPM ACH credit and debit flows across validation, sanctions / ECA processing, accounting, dispatch, status tracking, returns, and reversals.",
-      "Build loan disbursement and repayment flows, and create tools that cut API validation from four hours to four minutes and debugging time by 30%.",
+      "Build Java / Spring Boot REST APIs for Oracle FLEXCUBE Core Banking across Loans, CASA, Term Deposits, Locker, NBFC, and transaction workflows.",
+      "Translate banking requirements into service-layer and Oracle Database / PL/SQL logic, including loan disbursement and repayment workflows with validations, limits, processing, and status handling.",
+      "Integrate Oracle FLEXCUBE with Oracle Banking Payments (OBPM) for NEFT, RTGS, and IMPS flows, covering validation, initiation, status inquiry, error handling, reference tracking, and duplicate prevention.",
+      "Deliver controlled force-debit transfers, multi-debit / multi-credit transactions, and cheque-clearing pass / reject workflows with branch-aware routing, unique references, mappings, and audit controls.",
+      "Resolve production and integration issues through Java logs, API payloads, Oracle Database, and PL/SQL, while tooling cut API validation from four hours to four minutes and debugging time by 30%.",
     ],
   },
   {
@@ -64,6 +64,14 @@ export const experiences = [
 ] as const;
 
 export const projects = [
+  {
+    name: "AutoPay Guard",
+    description: "A fake-data-only recurring-payment control-center prototype with OpenAPI contracts and local Keycloak authentication; no bank connectivity or payment execution.",
+    impact: "Java 21",
+    impactLabel: "Spring Boot + Next.js prototype",
+    stack: ["Java 21", "Spring Boot", "Next.js", "Keycloak", "OpenAPI"],
+    url: "https://github.com/pratikmraut/autopay-guard",
+  },
   {
     name: "HireME",
     description: "An ML-powered recruitment platform that automates resume validation and candidate shortlisting.",
@@ -94,9 +102,14 @@ export const skillGroups = [
     items: ["Oracle DB", "SQL", "PL/SQL", "MySQL", "MongoDB", "Query Optimization", "Indexing"],
   },
   {
+    code: "domain.bank",
+    name: "Core Banking",
+    items: ["Oracle FLEXCUBE", "Loans / CASA", "Term Deposits", "Locker", "NBFC Workflows", "Transaction Workflows", "Disbursement & Repayment"],
+  },
+  {
     code: "payments.obpm",
     name: "Payments / OBPM",
-    items: ["Oracle Banking Payments", "NEFT", "ACH Credit & Debit", "Payment Mappings", "Transaction Inquiry", "Reference Tracking", "Duplicate Controls"],
+    items: ["Oracle Banking Payments", "NEFT", "RTGS", "IMPS", "Transaction Validation", "Reference Tracking", "Duplicate Prevention"],
   },
   {
     code: "ship.repeat",
@@ -107,11 +120,6 @@ export const skillGroups = [
     code: "verify.all",
     name: "Testing",
     items: ["JUnit", "Mockito", "Spring Boot Test", "MockMvc"],
-  },
-  {
-    code: "domain.bank",
-    name: "Core Banking",
-    items: ["Oracle FLEXCUBE", "Loans / CASA", "Term Deposits", "Locker", "NBFC Workflows", "Disbursement & Repayment", "Banking / Fintech"],
   },
 ] as const;
 

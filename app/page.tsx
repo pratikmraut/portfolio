@@ -30,7 +30,7 @@ export default function Home() {
             <span className="brand-mark">PR</span>
             <span>
               <strong>PRATIK_RAUT</strong>
-              <small>payments.backend</small>
+              <small>java.backend</small>
             </span>
           </a>
 
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <dl>
               <div><dt>location</dt><dd>Pune, India</dd></div>
-              <div><dt>focus</dt><dd>Payments / Core Banking</dd></div>
+              <div><dt>focus</dt><dd>Core Banking + Payments</dd></div>
               <div><dt>system</dt><dd>Operational</dd></div>
             </dl>
           </div>
@@ -61,15 +61,16 @@ export default function Home() {
               <p className="command-label"><span>$</span> whoami</p>
               <p className="hero-name">PRATIK RAUT</p>
               <h1 id="hero-title">
-                Payment systems for the <em>real world.</em>
+                Core banking &amp; payment <em>systems.</em>
               </h1>
               <p className="hero-summary">
-                I build production-grade payment and core-banking APIs, integrate FLEXCUBE with OBPM, and harden NEFT and ACH flows for reliable delivery.
+                Java backend engineer building enterprise APIs across Oracle FLEXCUBE
+                core banking and OBPM payment workflows, with reliable integration and automation.
               </p>
               <div className="hero-meta" aria-label="Professional summary">
-                <span>Associate Technical Consultant</span>
+                <span>Associate Software Engineer</span>
                 <span>Java + Spring Boot</span>
-                <span>OBPM + FLEXCUBE</span>
+                <span>FLEXCUBE + OBPM</span>
               </div>
               <div className="hero-actions">
                 <a className="button button-primary" href="#experience">
@@ -146,7 +147,7 @@ export default function Home() {
                 <p className="command-label"><span>$</span> git log --experience</p>
                 <h2 id="experience-title">Production history</h2>
               </div>
-              <p>Engineering experience across payments, core-banking platforms, and full-stack systems.</p>
+              <p>Engineering experience across core-banking platforms, payment systems, and full-stack delivery.</p>
             </div>
 
             <div className="timeline">
@@ -178,7 +179,7 @@ export default function Home() {
                 <p className="command-label"><span>$</span> ls -la ./projects</p>
                 <h2 id="projects-title">Selected builds</h2>
               </div>
-              <p>Useful systems built around automation, computer vision, and developer speed.</p>
+              <p>Backend engineering across payment controls, automation, applied ML, and developer speed.</p>
             </div>
 
             <div className="project-grid">
@@ -212,7 +213,7 @@ export default function Home() {
                 <p className="command-label"><span>$</span> cat stack.yml</p>
                 <h2 id="stack-title">Technical manifest</h2>
               </div>
-              <p>A backend-first toolkit for reliable payment and core-banking systems.</p>
+              <p>A backend-first toolkit for reliable core-banking and payment systems.</p>
             </div>
 
             <div className="stack-grid">
@@ -280,7 +281,7 @@ export default function Home() {
               <p className="command-label"><span>$</span> ./contact.sh</p>
               <h2 id="contact-title">Let&apos;s build something useful.</h2>
               <p>
-                Have a payments, core-banking, backend, or developer-tooling problem
+                Have a core-banking, payments, backend, or developer-tooling problem
                 to discuss? My inbox is open.
               </p>
             </div>

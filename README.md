@@ -1,8 +1,8 @@
-# Pratik Raut — Backend & Payments Engineer Portfolio
+# Pratik Raut — Java Backend Engineer Portfolio
 
 [![CI](https://github.com/pratikmraut/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/pratikmraut/portfolio/actions/workflows/ci.yml)
 
-An interactive, production-terminal-inspired portfolio for Java backend and payments engineer Pratik Raut.
+An interactive, production-terminal-inspired portfolio for Java backend engineer Pratik Raut, focused equally on core banking and payments.
 
 ![Pratik Raut portfolio social preview](public/og.png)
 

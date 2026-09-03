@@ -49,6 +49,7 @@ test("server-renders Pratik Raut's portfolio", async () => {
   assert.match(html, /CASA/);
   assert.match(html, /Term Deposits/);
   assert.match(html, /AutoPay Guard/);
+  assert.match(html, /Pratik_Raut_Java_Backend_Engineer\.pdf/);
   assert.match(html, /fake-data-only/i);
   assert.match(html, /no bank connectivity or payment execution/i);
   assert.match(html, /HireME/);

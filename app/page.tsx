@@ -76,7 +76,7 @@ export default function Home() {
                 <a className="button button-primary" href="#experience">
                   View experience <span aria-hidden="true">-&gt;</span>
                 </a>
-                <a className="button button-secondary" href={profile.resume} download>
+                <a className="button button-secondary" href={profile.resume} download="Pratik_Raut_Java_Backend_Engineer.pdf">
                   Download resume
                 </a>
               </div>

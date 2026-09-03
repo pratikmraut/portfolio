@@ -64,8 +64,8 @@ export function Terminal() {
     }
 
     if (command === "resume") {
-      append("output", "Opening Pratik_Raut_Resume.pdf...");
-      window.open(`${basePath}/Pratik_Raut_Resume.pdf`, "_blank", "noopener,noreferrer");
+      append("output", "Opening Pratik_Raut_Java_Backend_Engineer.pdf...");
+      window.open(`${basePath}/Pratik_Raut_Java_Backend_Engineer.pdf`, "_blank", "noopener,noreferrer");
       return;
     }
 

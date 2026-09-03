@@ -29,24 +29,25 @@ export const impactMetrics = [
     detail: "Delivered through an AI-assisted Java and database log workflow.",
   },
   {
-    value: "1,000+",
-    label: "Problems solved",
-    detail: "Across LeetCode, CodeChef, and competitive programming platforms.",
+    value: "NEFT + ACH",
+    label: "Payment rails",
+    detail: "Integrated FLEXCUBE with OBPM and supported controlled credit and debit payment lifecycles.",
   },
 ] as const;
 
 export const experiences = [
   {
     company: "Oracle",
-    role: "Associate Software Engineer",
+    role: "Associate Technical Consultant",
     period: "Jun 2023 — Present",
     location: "Pune, India",
-    stack: ["Java", "Spring Boot", "REST APIs", "Oracle DB", "PL/SQL", "OJET"],
+    stack: ["Java", "Spring", "REST APIs", "Oracle FLEXCUBE", "OBPM", "Oracle DB", "PL/SQL"],
     highlights: [
-      "Design and deliver Spring Boot REST APIs for Oracle FLEXCUBE modules across loans, CASA, term deposits, lockers, and banking workflows.",
-      "Build end-to-end loan disbursement and repayment flows backed by scalable service logic and Oracle DB / PL/SQL procedures.",
-      "Extend API contracts, resolve critical third-party integrations, and automate limits, status handling, and operational workflows.",
-      "Created tools that cut API validation from four hours to four minutes and reduced debugging time by 30%.",
+      "Design and deliver Java / Spring REST APIs for Oracle FLEXCUBE Core Banking across loans, CASA, term deposits, lockers, and NBFC workflows.",
+      "Integrate Oracle FLEXCUBE with Oracle Banking Payments (OBPM) for NEFT flows, including beneficiary and IFSC validation, initiation, status inquiry, error handling, reference tracking, and duplicate prevention.",
+      "Harden outward NEFT, external payouts, and force-debit fund transfers with branch-aware routing, unique references, payment and currency mappings, audit trails, and duplicate-instruction controls.",
+      "Support end-to-end OBPM ACH credit and debit flows across validation, sanctions / ECA processing, accounting, dispatch, status tracking, returns, and reversals.",
+      "Build loan disbursement and repayment flows, and create tools that cut API validation from four hours to four minutes and debugging time by 30%.",
     ],
   },
   {
@@ -93,9 +94,9 @@ export const skillGroups = [
     items: ["Oracle DB", "SQL", "PL/SQL", "MySQL", "MongoDB", "Query Optimization", "Indexing"],
   },
   {
-    code: "secure.flow",
-    name: "Security & Events",
-    items: ["Spring Security", "OAuth2", "JWT", "Kafka", "Redis", "Event-Driven Architecture", "Caching"],
+    code: "payments.obpm",
+    name: "Payments / OBPM",
+    items: ["Oracle Banking Payments", "NEFT", "ACH Credit & Debit", "Payment Mappings", "Transaction Inquiry", "Reference Tracking", "Duplicate Controls"],
   },
   {
     code: "ship.repeat",
@@ -109,8 +110,8 @@ export const skillGroups = [
   },
   {
     code: "domain.bank",
-    name: "Banking",
-    items: ["Oracle FLEXCUBE", "Loans / CASA", "Deposits", "Locker", "General Ledger", "Banking / Fintech"],
+    name: "Core Banking",
+    items: ["Oracle FLEXCUBE", "Loans / CASA", "Term Deposits", "Locker", "NBFC Workflows", "Disbursement & Repayment", "Banking / Fintech"],
   },
 ] as const;
 

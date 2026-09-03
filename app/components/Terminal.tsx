@@ -59,7 +59,7 @@ export function Terminal() {
     }
 
     if (command === "whoami" || command === "about") {
-      append("output", "Pratik Raut — backend engineer building reliable banking systems with Java, Spring Boot, Oracle DB, and measurable automation.");
+      append("output", "Pratik Raut — backend and payments engineer building reliable payment and core-banking systems with Java, Spring, FLEXCUBE, and OBPM.");
       return;
     }
 

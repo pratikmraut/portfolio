@@ -35,10 +35,14 @@ test("server-renders Pratik Raut's portfolio", async () => {
   assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
 
   const html = await response.text();
-  assert.match(html, /<title>Pratik Raut \| Backend Engineer<\/title>/i);
-  assert.match(html, /Backend systems for the/);
+  assert.match(html, /<title>Pratik Raut \| Backend &amp; Payments Engineer<\/title>/i);
+  assert.match(html, /Payment systems for the/);
   assert.match(html, /150\+/);
   assert.match(html, /Oracle FLEXCUBE/);
+  assert.match(html, /Associate Technical Consultant/);
+  assert.match(html, /Oracle Banking Payments \(OBPM\)/);
+  assert.match(html, /NEFT/);
+  assert.match(html, /ACH credit and debit flows/);
   assert.match(html, /HireME/);
   assert.match(html, /Interactive portfolio terminal/);
   assert.match(html, /pratik-hacker-portrait\.webp/);
@@ -76,7 +80,7 @@ test("removes all disposable starter preview code", async () => {
   ]);
 
   assert.match(page, /<Terminal \/>/);
-  assert.match(layout, /Pratik Raut \| Backend Engineer/);
+  assert.match(layout, /Pratik Raut \| Backend & Payments Engineer/);
   assert.doesNotMatch(layout, /next\/font|codex-preview|Starter Project/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

@@ -46,6 +46,21 @@ npm.cmd audit
 
 The test command creates the production build and validates both the rendered portfolio and the live status endpoint.
 
+Browser regressions run against the static GitHub Pages export, including mobile
+navigation, section scrolling, browser history, terminal commands, and resume downloads:
+
+```powershell
+$env:GITHUB_PAGES = "true"
+$env:NEXT_PUBLIC_BASE_PATH = "/portfolio"
+npm.cmd run build
+npm.cmd run test:frontend
+```
+
+Windows tests use installed Microsoft Edge. On Linux, install the test browser
+with `npx playwright install --with-deps chromium`. The Pages workflow runs these
+checks before publishing. Set `PORTFOLIO_TEST_URL` to test the live site instead
+of starting the local static server.
+
 ## Project structure
 
 - `app/page.tsx` — portfolio sections and identity console

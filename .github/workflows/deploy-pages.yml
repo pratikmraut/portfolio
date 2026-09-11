@@ -43,6 +43,12 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
 
+      - name: Install browser for frontend checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test static portfolio in desktop, mobile, and tablet browsers
+        run: npx playwright test
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

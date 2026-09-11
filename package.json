@@ -20,6 +20,7 @@
     "build": "vinext build",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test:frontend": "playwright test",
     "lint": "eslint app tests worker vite.config.ts next.config.ts --max-warnings=0",
     "typecheck": "tsc --noEmit"
   },
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.47.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

@@ -81,6 +81,23 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Register before the runtime: window popstate listeners run in registration order. */}
+        <script id="portfolio-section-history" dangerouslySetInnerHTML={{ __html: `
+          (() => {
+            const documentUrl = location.pathname + location.search;
+            window.addEventListener("popstate", (event) => {
+              if (location.pathname + location.search !== documentUrl) return;
+              let id;
+              try { id = decodeURIComponent(location.hash.slice(1)) || "top"; }
+              catch { return; }
+              if (!document.getElementById(id)) return;
+              event.stopImmediatePropagation();
+              window.dispatchEvent(new CustomEvent("portfolio:history-navigation", { detail: id }));
+            });
+          })();
+        ` }} />
+      </head>
       <body>{children}</body>
     </html>
   );

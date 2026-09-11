@@ -1,4 +1,5 @@
 import { Terminal } from "./components/Terminal";
+import { SectionNavigation } from "./components/SectionNavigation";
 import {
   achievements,
   certifications,
@@ -17,6 +18,7 @@ export const dynamic = "force-static";
 export default function Home() {
   return (
     <>
+      <SectionNavigation />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
@@ -55,8 +57,8 @@ export default function Home() {
           </div>
         </aside>
 
-        <main id="main-content">
-          <section className="hero section" id="top" aria-labelledby="hero-title">
+        <main id="main-content" tabIndex={-1}>
+          <section className="hero section" id="top" aria-labelledby="hero-title" tabIndex={-1}>
             <div className="hero-copy">
               <p className="command-label"><span>$</span> whoami</p>
               <p className="hero-name">PRATIK RAUT</p>
@@ -120,7 +122,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section impact-section" id="impact" aria-labelledby="impact-title">
+          <section className="section impact-section" id="impact" aria-labelledby="impact-title" tabIndex={-1}>
             <div className="section-heading">
               <div>
                 <p className="command-label"><span>$</span> cat /proc/impact</p>
@@ -141,7 +143,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section" id="experience" aria-labelledby="experience-title">
+          <section className="section" id="experience" aria-labelledby="experience-title" tabIndex={-1}>
             <div className="section-heading">
               <div>
                 <p className="command-label"><span>$</span> git log --experience</p>
@@ -173,7 +175,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section" id="projects" aria-labelledby="projects-title">
+          <section className="section" id="projects" aria-labelledby="projects-title" tabIndex={-1}>
             <div className="section-heading">
               <div>
                 <p className="command-label"><span>$</span> ls -la ./projects</p>
@@ -207,7 +209,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section" id="stack" aria-labelledby="stack-title">
+          <section className="section" id="stack" aria-labelledby="stack-title" tabIndex={-1}>
             <div className="section-heading">
               <div>
                 <p className="command-label"><span>$</span> cat stack.yml</p>
@@ -231,7 +233,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section credentials" id="credentials" aria-labelledby="credentials-title">
+          <section className="section credentials" id="credentials" aria-labelledby="credentials-title" tabIndex={-1}>
             <div className="section-heading">
               <div>
                 <p className="command-label"><span>$</span> tail achievements.log</p>
@@ -276,7 +278,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section contact-section" id="contact" aria-labelledby="contact-title">
+          <section className="section contact-section" id="contact" aria-labelledby="contact-title" tabIndex={-1}>
             <div className="contact-copy">
               <p className="command-label"><span>$</span> ./contact.sh</p>
               <h2 id="contact-title">Let&apos;s build something useful.</h2>

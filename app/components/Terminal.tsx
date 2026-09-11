@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { navigateToSection } from "./section-navigation";
 
 type TerminalEntry = {
   id: number;
@@ -32,12 +33,13 @@ export function Terminal() {
   const logRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "smooth" });
+    logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "instant" });
   }, [entries]);
 
   const append = (kind: TerminalEntry["kind"], text: string) => {
+    const entry = { id: nextId.current++, kind, text };
     setEntries((current) =>
-      [...current, { id: nextId.current++, kind, text }].slice(-50),
+      [...current, entry].slice(-50),
     );
   };
 
@@ -77,7 +79,8 @@ export function Terminal() {
 
       append("output", "Pinging server runtime...");
       try {
-        const response = await fetch("/api/status", { cache: "no-store" });
+        const response = await fetch(`${basePath}/api/status`, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+        if (!response.ok) throw new Error(`Status request failed: ${response.status}`);
         const result = (await response.json()) as { ok: boolean; service: string; serverTime: string };
         append(result.ok ? "output" : "error", `${result.ok ? "API ONLINE" : "API DEGRADED"} · ${result.service} · ${new Date(result.serverTime).toLocaleString()}`);
       } catch {
@@ -89,7 +92,7 @@ export function Terminal() {
     const navigation = navigationCommands[command];
     if (navigation) {
       append("output", navigation.message);
-      document.getElementById(navigation.target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      navigateToSection(navigation.target);
       return;
     }
 

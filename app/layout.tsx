@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const description =
-  "Java backend engineer building reliable core-banking and payment APIs with Spring Boot, Oracle FLEXCUBE, OBPM, NEFT, RTGS, and IMPS.";
+  "Pratik Raut, Java backend engineer with 3+ years at Oracle. Core-banking and payment APIs with Spring Boot and Oracle DB/PL/SQL, plus AI-assisted investigation projects.";
 const defaultSiteUrl = "https://pratikmraut.github.io/portfolio/";
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 const siteUrl = new URL(
@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "IMPS",
     "REST APIs",
     "Fintech",
+    "Retrieval-Augmented Generation",
+    "Ollama",
   ],
   authors: [{ name: "Pratik Raut" }],
   creator: "Pratik Raut",

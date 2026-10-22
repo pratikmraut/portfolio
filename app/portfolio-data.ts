@@ -3,11 +3,11 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const profile = {
   name: "Pratik Raut",
   email: "pratikmraut.8@gmail.com",
-  resume: `${basePath}/Pratik_Raut_Java_Backend_Engineer.pdf`,
+  resume: `${basePath}/Pratik_Raut_Java_Backend_Engineer.pdf?v=76ac04667ac1`,
   links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/pratik-raut/" },
     { label: "GitHub", url: "https://github.com/pratikmraut" },
-    { label: "LeetCode", url: "https://leetcode.com/voyagertour/" },
+    { label: "LeetCode", url: "https://leetcode.com/u/voyagertour/" },
     { label: "CodeChef", url: "https://www.codechef.com/users/voyagertour" },
   ],
 } as const;
@@ -38,20 +38,21 @@ export const impactMetrics = [
 export const experiences = [
   {
     company: "Oracle",
-    role: "Associate Software Engineer",
+    role: "Software Engineer",
     period: "Jun 2023 — Present",
     location: "Pune, India",
     stack: ["Java", "Spring Boot", "REST APIs", "Oracle FLEXCUBE", "OBPM", "Oracle DB", "PL/SQL"],
     highlights: [
       "Build Java / Spring Boot REST APIs for Oracle FLEXCUBE Core Banking across Loans, CASA, Term Deposits, Locker, NBFC, and transaction workflows.",
-      "Translate banking requirements into service-layer and Oracle Database / PL/SQL logic, including loan disbursement and repayment workflows with validations, limits, processing, and status handling.",
+      "Translate banking requirements into service-layer and Oracle DB/PL/SQL procedures for FLEXCUBE implementation and enhancements, including end-to-end loan disbursement and repayment with validations, limits, transaction processing, and status handling.",
       "Integrate Oracle FLEXCUBE with Oracle Banking Payments (OBPM) for NEFT, RTGS, and IMPS flows, covering validation, initiation, status inquiry, error handling, reference tracking, and duplicate prevention.",
-      "Deliver controlled force-debit transfers, multi-debit / multi-credit transactions, and cheque-clearing pass / reject workflows with branch-aware routing, unique references, mappings, and audit controls.",
-      "Resolve production and integration issues through Java logs, API payloads, Oracle Database, and PL/SQL, while tooling cut API validation from four hours to four minutes and debugging time by 30%.",
+      "Deliver controlled force-debit transfers, multi-debit / multi-credit transactions, and cheque-clearing pass / reject workflows with branch-aware routing, unique-reference generation, payment/currency mapping, audit controls, and duplicate-instruction prevention.",
+      "Resolve third-party integration and production issues through root-cause analysis of Java logs, API payloads, Oracle DB errors, and PL/SQL; an AI-assisted log-analysis workflow reduced debugging time by 30%.",
+      "Built an internal API validation and developer-productivity tool supporting 150+ FLEXCUBE APIs, reducing validation cycles from four hours to four minutes — 60x faster.",
     ],
   },
   {
-    company: "Walchand COE",
+    company: "Walchand College of Engineering",
     role: "Backend Developer Intern",
     period: "Dec 2021 — Feb 2022",
     location: "Sangli, India",
@@ -65,11 +66,29 @@ export const experiences = [
 
 export const projects = [
   {
+    name: "Payment Operations Investigator",
+    description: "A payment-investigation workbench combining read-only FLEXCUBE inquiry APIs with Excel and JSON imports to consolidate transaction records and preserve versioned evidence.",
+    highlights: [
+      "Local Ollama models, semantic embeddings, and Retrieval-Augmented Generation (RAG) produce cited answers linked to selected payment evidence.",
+      "Tenant-scoped role-based access, idempotent workflows, and audit trails protect investigation and case-lifecycle controls.",
+      "Independent reviewer conclusions and downloadable PDF reports keep evidence and review decisions traceable.",
+    ],
+    impact: "90",
+    impactLabel: "versioned knowledge documents",
+    stack: ["Java", "Spring Boot", "React", "Python", "Ollama", "RAG"],
+    url: "https://github.com/pratikmraut/payment-operations-investigator",
+  },
+  {
     name: "AutoPay Guard",
-    description: "A fake-data-only recurring-payment control-center prototype with OpenAPI contracts and local Keycloak authentication; no bank connectivity or payment execution.",
-    impact: "Java 21",
-    impactLabel: "Spring Boot + Next.js prototype",
-    stack: ["Java 21", "Spring Boot", "Next.js", "Keycloak", "OpenAPI"],
+    description: "A fake-data-only recurring-payment tracking prototype with deterministic scheduling, spend projections, optimistic locking, and idempotent APIs; no bank connectivity or payment execution.",
+    highlights: [
+      "OAuth2/OIDC, JWT validation, role-based access, and workspace isolation, with authentication tokens kept server-side by a Next.js backend-for-frontend.",
+      "Transactional outbox notification processing with worker leases, bounded retries, and failure recovery.",
+      "Automated backend checks integrated with GitHub Actions CI, CodeQL, and dependency scanning.",
+    ],
+    impact: "347",
+    impactLabel: "passing automated tests · résumé snapshot",
+    stack: ["Java 21", "Spring Boot", "PostgreSQL", "Next.js", "Keycloak", "OpenAPI"],
     url: "https://github.com/pratikmraut/autopay-guard",
   },
   {
@@ -92,14 +111,19 @@ export const projects = [
 
 export const skillGroups = [
   {
+    code: "language.set",
+    name: "Languages",
+    items: ["Java", "JavaScript", "Python"],
+  },
+  {
     code: "core.backend",
     name: "Backend",
-    items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "REST APIs", "Microservices", "Hibernate"],
+    items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "REST APIs", "Microservices", "Hibernate/JPA"],
   },
   {
     code: "data.layer",
     name: "Data",
-    items: ["Oracle DB", "SQL", "PL/SQL", "MySQL", "MongoDB", "Query Optimization", "Indexing"],
+    items: ["Oracle DB", "SQL", "PL/SQL", "PostgreSQL", "MySQL", "MongoDB", "Query Optimization", "Indexing"],
   },
   {
     code: "domain.bank",
@@ -112,21 +136,31 @@ export const skillGroups = [
     items: ["Oracle Banking Payments", "NEFT", "RTGS", "IMPS", "Transaction Validation", "Reference Tracking", "Duplicate Prevention"],
   },
   {
+    code: "client.layer",
+    name: "Frontend",
+    items: ["React", "Oracle JET", "HTML", "CSS", "Next.js"],
+  },
+  {
     code: "ship.repeat",
     name: "Platform",
-    items: ["Git", "Maven", "Jenkins", "Docker", "OpenShift", "OCI", "Postman", "OpenAPI", "Linux"],
+    items: ["Git", "Maven", "Jenkins", "Docker", "OpenShift", "OCI", "Swagger/OpenAPI", "Linux"],
   },
   {
     code: "verify.all",
     name: "Testing",
-    items: ["JUnit", "Mockito", "Spring Boot Test", "MockMvc"],
+    items: ["JUnit", "Mockito", "Spring Boot Test", "MockMvc", "Selenium", "Postman"],
+  },
+  {
+    code: "ai.knowledge",
+    name: "AI & ML",
+    items: ["Generative AI", "LLM Integration", "Retrieval-Augmented Generation (RAG)", "Semantic Embeddings", "Ollama", "Machine Learning Fundamentals"],
   },
 ] as const;
 
 export const achievements = [
   {
     title: "Oracle FSGIU Pacesetter — Spark Award",
-    detail: "Recognized for team success, customer delivery, and organizational impact.",
+    detail: "Recognized for customer outcomes, delivery excellence, innovation, and team success.",
   },
   {
     title: "National-level RSC recognition",
@@ -135,6 +169,10 @@ export const achievements = [
   {
     title: "Competitive programming",
     detail: "Solved 1,000+ problems and reached CodeChef 3-star with a maximum rating of 1671.",
+  },
+  {
+    title: "Moodle LMS 4.1+",
+    detail: "Developed a Moodle learning-management system for Walchand College of Engineering during an internship.",
   },
 ] as const;
 

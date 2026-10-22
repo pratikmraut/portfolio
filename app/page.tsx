@@ -66,11 +66,11 @@ export default function Home() {
                 Core banking &amp; payment <em>systems.</em>
               </h1>
               <p className="hero-summary">
-                Java backend engineer building enterprise APIs across Oracle FLEXCUBE
-                core banking and OBPM payment workflows, with reliable integration and automation.
+                Java backend engineer with 3+ years at Oracle, building Java/Spring Boot
+                APIs and Oracle DB/PL/SQL services across FLEXCUBE core banking and OBPM payment workflows.
               </p>
               <div className="hero-meta" aria-label="Professional summary">
-                <span>Associate Software Engineer</span>
+                <span>Software Engineer</span>
                 <span>Java + Spring Boot</span>
                 <span>FLEXCUBE + OBPM</span>
               </div>
@@ -181,7 +181,7 @@ export default function Home() {
                 <p className="command-label"><span>$</span> ls -la ./projects</p>
                 <h2 id="projects-title">Selected builds</h2>
               </div>
-              <p>Backend engineering across payment controls, automation, applied ML, and developer speed.</p>
+              <p>Four independent builds spanning payment investigation, recurring-payment controls, recruitment ML, and visitor verification.</p>
             </div>
 
             <div className="project-grid">
@@ -193,6 +193,11 @@ export default function Home() {
                   </div>
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>
+                  {"highlights" in project && (
+                    <ul className="project-highlights">
+                      {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                    </ul>
+                  )}
                   <div className="project-impact">
                     <strong>{project.impact}</strong>
                     <span>{project.impactLabel}</span>
@@ -215,7 +220,7 @@ export default function Home() {
                 <p className="command-label"><span>$</span> cat stack.yml</p>
                 <h2 id="stack-title">Technical manifest</h2>
               </div>
-              <p>A backend-first toolkit for reliable core-banking and payment systems.</p>
+              <p>A backend-first toolkit spanning banking work, personal projects, and continued learning in AI and cloud.</p>
             </div>
 
             <div className="stack-grid">

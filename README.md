@@ -4,6 +4,13 @@
 
 An interactive, production-terminal-inspired portfolio for Java backend engineer Pratik Raut, focused equally on core banking and payments.
 
+Content and the downloadable PDF were refreshed from the user's latest résumé on
+22 October 2026. The portfolio presents Software Engineer experience at Oracle,
+four selected projects (Payment Operations Investigator, AutoPay Guard, HireME,
+and Visitor Authorization System), and the résumé's AI/ML skills and achievements.
+Project work is presented separately from employment; AutoPay Guard remains a
+fake-data-only prototype with no bank connectivity or payment execution.
+
 ![Pratik Raut portfolio social preview](public/og.png)
 
 ## Features

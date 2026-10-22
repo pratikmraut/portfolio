@@ -9,6 +9,13 @@ const sections = [
   ["Contact", "contact"],
 ] as const;
 
+const expectedProjects = [
+  ["Payment Operations Investigator", "https://github.com/pratikmraut/payment-operations-investigator"],
+  ["AutoPay Guard", "https://github.com/pratikmraut/autopay-guard"],
+  ["HireME", "https://github.com/pratikmraut/inside-eye"],
+  ["Visitor Authorization System", "https://github.com/pratikmraut/authorised-visitor-validation"],
+] as const;
+
 async function expectSection(page: Page, id: string) {
   await expect(page).toHaveURL(new RegExp(`#${id}$`));
   const section = page.locator(`#${id}`);
@@ -163,6 +170,49 @@ test("direct fragment URLs reveal the right section", async ({ page, baseURL }) 
   await expectSection(page, "experience");
 });
 
+test("four numbered projects show readable headings and open the correct repositories", async ({ page, context }) => {
+  await context.route(/^https:\/\/github\.com\//, (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "<title>Project repository</title>" }),
+  );
+  const cards = page.locator("#projects .project-card");
+  await expect(cards).toHaveCount(expectedProjects.length);
+  const observed = recordUnexpectedNavigation(page);
+  const originalUrl = page.url();
+  for (const [index, [name, url]] of expectedProjects.entries()) {
+    const card = cards.nth(index);
+    const heading = card.getByRole("heading", { name, exact: true });
+    await expect(heading).toBeVisible();
+    await expect(card.locator(".project-topline")).toContainText(`repo_${String(index + 1).padStart(2, "0")}`);
+    await expect.poll(() => heading.evaluate((element: HTMLElement) =>
+      element.scrollWidth <= element.clientWidth + 1 && element.scrollHeight <= element.clientHeight + 1,
+    ), { message: `${name} is readable without clipping` }).toBe(true);
+    await expect.poll(() => card.evaluate((element: HTMLElement) => {
+      const cardBounds = element.getBoundingClientRect();
+      // The intentionally clipped ::after decoration extends past the card.
+      // Measure real content instead, including its own overflowing text.
+      return Array.from(element.children).every((child) => {
+        const content = child as HTMLElement;
+        const bounds = content.getBoundingClientRect();
+        return bounds.left >= cardBounds.left - 1 && bounds.right <= cardBounds.right + 1 &&
+          bounds.top >= cardBounds.top - 1 && bounds.bottom <= cardBounds.bottom + 1 &&
+          content.scrollWidth <= content.clientWidth + 1 && content.scrollHeight <= content.clientHeight + 1;
+      });
+    }), { message: `${name} content fits its card without clipping` }).toBe(true);
+    const link = card.getByRole("link", { name: /View repository/ });
+    await expect(link).toHaveAttribute("href", url);
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /\b(?:noopener|noreferrer)\b/);
+    const popupPromise = page.waitForEvent("popup");
+    await link.click();
+    const popup = await popupPromise;
+    await expect(popup).toHaveURL(url);
+    await popup.close();
+    await expect(page).toHaveURL(originalUrl);
+  }
+  expect(observed.requests).toEqual([]);
+  expect(observed.errors).toEqual([]);
+});
+
 test("terminal commands respond and section commands navigate", async ({ page }) => {
   const log = page.getByRole("log");
   const input = page.getByRole("textbox", { name: "Enter a portfolio command" });
@@ -185,12 +235,15 @@ test("terminal commands respond and section commands navigate", async ({ page })
 });
 
 test("resume button downloads the intended PDF", async ({ page, request }) => {
+  const expectedBytes = await readFile(new URL("../public/Pratik_Raut_Java_Backend_Engineer.pdf", import.meta.url));
   const link = page.getByRole("link", { name: "Download resume", exact: true });
   const href = await link.getAttribute("href");
   const response = await request.get(new URL(href!, page.url()).href);
   expect(response.status()).toBe(200);
   expect(response.headers()["content-type"]).toContain("application/pdf");
-  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  const responseBytes = await response.body();
+  expect(responseBytes.subarray(0, 5).toString()).toBe("%PDF-");
+  expect(responseBytes.equals(expectedBytes), "Hosted PDF matches the current checked-in resume").toBe(true);
   const downloadPromise = page.waitForEvent("download");
   await link.click();
   const download = await downloadPromise;
@@ -200,6 +253,7 @@ test("resume button downloads the intended PDF", async ({ page, request }) => {
   const bytes = await readFile(downloadedFile!);
   expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
   expect(bytes.length).toBeGreaterThan(1_000);
+  expect(bytes.equals(expectedBytes), "Downloaded PDF matches the current checked-in resume").toBe(true);
 });
 
 test("keyboard skip link moves focus into main content", async ({ page }) => {
@@ -229,6 +283,9 @@ test("page fits narrow phones, tablets, and wide desktop windows", async ({ page
       document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1,
     ), { message: `No page overflow at ${width}px` }).toBe(true);
     await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeVisible();
+    await expect.poll(() => page.locator("#projects .project-card h3").evaluateAll((headings) =>
+      headings.every((heading) => heading.scrollWidth <= heading.clientWidth + 1 && heading.scrollHeight <= heading.clientHeight + 1),
+    ), { message: `Project headings are not clipped at ${width}px` }).toBe(true);
   }
 });
 

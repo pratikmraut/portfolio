@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { navigateToSection } from "./section-navigation";
+import { profile } from "../portfolio-data";
 
 type TerminalEntry = {
   id: number;
@@ -61,13 +62,13 @@ export function Terminal() {
     }
 
     if (command === "whoami" || command === "about") {
-      append("output", "Pratik Raut — Java backend engineer building reliable core-banking and payment systems with Spring Boot, FLEXCUBE, and OBPM.");
+      append("output", "Pratik Raut — Software Engineer at Oracle with 3+ years of Java backend experience across core banking and payments. Personal projects include AI-assisted investigation with RAG and Ollama.");
       return;
     }
 
     if (command === "resume") {
       append("output", "Opening Pratik_Raut_Java_Backend_Engineer.pdf...");
-      window.open(`${basePath}/Pratik_Raut_Java_Backend_Engineer.pdf`, "_blank", "noopener,noreferrer");
+      window.open(profile.resume, "_blank", "noopener,noreferrer");
       return;
     }
 
